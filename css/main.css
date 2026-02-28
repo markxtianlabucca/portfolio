@@ -69,15 +69,14 @@ body {
     border: 2px solid white;
     position: fixed;
     top: -5px;
-    /* left: -5px; [PERF] Offset so transform:translate(x,y) centers dot on cursor point */
+    left: -5px; /* [PERF] Offset so transform:translate(x,y) centers dot on cursor point */
     pointer-events: none;
     z-index: 10000;
-    transition: opacity 0.15s ease, transform 0.2s ease;
+    transition: opacity 0.15s ease;
     opacity: 0;
     will-change: transform;
     box-shadow: 0 0 0 2px rgba(104, 64, 184, 0.3),
         0 2px 8px rgba(0, 0, 0, 0.2);
-        display: none;
 }
 
 .cursor-dot.active {
