@@ -974,6 +974,7 @@ body.loader-active {
 /* Scroll Indicator */
 .scroll-indicator {
     position: absolute;
+    top: 7rem;
     bottom: 3rem;
     left: 50%;
     transform: translateX(-50%);
