@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work - Mark Christian Labucca</title>
+    <meta name="description" content="Portfolio of UI/UX design, graphic design, and front-end development projects by Mark Christian Labucca.">
+    <meta property="og:title"       content="Work — Mark Christian Labucca">
+    <meta property="og:description" content="Browse UI/UX, branding, and development projects by Mark Christian Labucca.">
+    <meta property="og:image"       content="https://yourdomain.com/img/og-preview.jpg">
+    <meta property="og:url"         content="https://yourdomain.com/work.html">
+    <meta property="og:type"        content="website">
+    <meta name="twitter:card"       content="summary_large_image">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/mc-favicon.png">
+    <!-- PERF: preconnect BEFORE stylesheet so the connection warms up immediately -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="css/work.css">
+    <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <p class="loader-text">mc.labucca</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="home.html" class="logo">
+                <span style="color: #6840B8;">■</span> mc.labucca
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="home.html" class="nav-link">Home</a></li>
+                <li><a href="work.html" class="nav-link active">Work</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="https://forms.gle/L765wte7jkqrr68J8" target="_blank" rel="noopener noreferrer" class="nav-cta">
+                        <span>Start a Project</span>
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                            <path d="M3 9h12m0 0l-5-5m5 5l-5 5" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </a></li>
+            </ul>
+        </div>
+    </nav>
+    <br><br>
+    <!-- Featured Works Section -->
+    <section class="projects" id="projects">
+        <div class="grid-background"></div>
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">My Work</span>
+                <h2 class="section-title">The Collection</h2>
+                <p class="section-description">Take a look at what I’ve been up to, and feel free to filter them to see exactly what you’re looking for.</p>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="project-search-container">
+                <div class="search-bar">
+                    <svg class="search-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="2" />
+                        <path d="M14 14l4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                    <input type="text" id="projectSearch" class="search-input"
+                        placeholder="Search projects by name or keyword..." autocomplete="off">
+                    <button class="search-clear" id="searchClear" style="display: none;">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M12 4L4 12M4 4l8 8" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Project Filters -->
+            <div class="project-filters">
+                <button class="filter-chip active" data-filter="all">
+                    All Projects
+                </button>
+
+                <button class="filter-chip" data-filter="featured">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                        <path d="M9 2l2.163 4.382 4.837.705-3.5 3.41.826 4.816L9 13.18l-4.326 2.134.826-4.816-3.5-3.41 4.837-.705L9 2z" 
+                              fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Top Picks
+                </button>
+                
+                <button class="filter-chip" data-filter="uiux">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                        <rect x="2" y="4" width="6" height="10" rx="1" stroke="currentColor" stroke-width="2" />
+                        <rect x="10" y="4" width="6" height="10" rx="1" stroke="currentColor" stroke-width="2" />
+                    </svg>
+                    UI/UX Design
+                </button>
+                <button class="filter-chip" data-filter="graphics">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                        <rect x="3" y="3" width="12" height="12" rx="2" stroke="currentColor" stroke-width="2" />
+                        <path d="M3 6h12M6 3v12" stroke="currentColor" stroke-width="2" />
+                    </svg>
+                    Graphics Design
+                </button>
+                <button class="filter-chip" data-filter="development">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                        <path d="M5 7l-3 3 3 3M13 7l3 3-3 3M11 4L7 14" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    Development
+                </button>
+                <button class="filter-chip" data-filter="others">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                        <circle cx="9" cy="4" r="2" fill="currentColor" />
+                        <circle cx="9" cy="9" r="2" fill="currentColor" />
+                        <circle cx="9" cy="14" r="2" fill="currentColor" />
+                    </svg>
+                    Others
+                </button>
+            </div>
+
+            <div class="projects-grid">
+                <!-- 
+                ========================================
+                HOW TO MARK PROJECTS AS "TOP PICKS":
+                ========================================
+                Simply add data-featured="true" to any project card you want to feature.
+                
+                Example:
+                <article class="project-card" data-category="development" data-date="2026-01" data-featured="true">
+                
+                When users click "Top Picks", only projects with data-featured="true" will show.
+                You can feature as many or as few projects as you want - just add/remove the attribute!
+                ========================================
+                -->
+                
+                <!-- Development Projects -->
+                <article class="project-card" data-category="development uiux" data-date="2025-06" data-featured="true">
+                    <div class="project-image">
+                        <img src="img/project-1.jpg"
+                            alt="Iram II Elementary School Student Transcript and Academic Records System"
+                            class="project-thumbnail" loading="lazy">
+                        <div class="project-date">
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                <rect x="2" y="3" width="10" height="9" rx="1" stroke="currentColor"
+                                    stroke-width="1.5" />
+                                <path d="M2 6h10M5 1v2M9 1v2" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" />
+                            </svg>
+                            Apr - Jun 2025
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="project-tag">Project Manager</span>
+                            <span class="project-tag">Lead Designer</span>
+                        </div>
+                        <h3 class="project-title">Iram II Elementary School Student Transcript and Academic Records
+                            System</h3>
+                        <p class="project-description">
+                            Directed design and development of a desktop system for a local public elementary
+                            school, improving access to 200+ student records and replacing manual processes.
+                        </p>
+                        <a href="#" class="project-link">
+                            View Project
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M3 8h10m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" />
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="project-card" data-category="development uiux" data-date="2025-08" data-featured="true">
+                    <div class="project-image">
+                        <img src="img/projects/project-2.jpg" alt="Planate Management Group Support Center"
+                            class="project-thumbnail" loading="lazy">
+                        <div class="project-date">
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                <rect x="2" y="3" width="10" height="9" rx="1" stroke="currentColor"
+                                    stroke-width="1.5" />
+                                <path d="M2 6h10M5 1v2M9 1v2" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" />
+                            </svg>
+                            Jun - Aug 2025
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="project-tag">Interaction & Visual Designer</span>
+                            <span class="project-tag">Frontend Developer</span>
+                        </div>
+                        <h3 class="project-title">Planate Management Group Support Center</h3>
+                        <p class="project-description">
+                            Led overall UX design and supported frontend development for an in-house ticketing
+                            system of Planate Management Group, streamlining support requests across 500+ employees.
+                        </p>
+                        <a href="#" class="project-link">
+                            View Project
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M3 8h10m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" />
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="project-card" data-category="uiux development" data-date="2024-01" data-featured="true">
+                    <div class="project-image">
+                        <img src="img/projects/project-3.jpg" alt="Lunas Talaan Mobile Application"
+                            class="project-thumbnail" loading="lazy">
+                        <div class="project-date">
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                <rect x="2" y="3" width="10" height="9" rx="1" stroke="currentColor"
+                                    stroke-width="1.5" />
+                                <path d="M2 6h10M5 1v2M9 1v2" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" />
+                            </svg>
+                            Jan 2024
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="project-tag">Project Manager</span>
+                            <span class="project-tag">UI/UX Designer</span>
+                        </div>
+                        <h3 class="project-title">Lunas Talaan Mobile Application</h3>
+                        <p class="project-description">
+                            Designed and led the development of Lunas Talaan, a medication reminder app helping users
+                            manage their medications, reaching 1,000+ installs across APKPure and
+                            Amazon Appstore.
+                        </p>
+                        <a href="#" class="project-link">
+                            View Project
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M3 8h10m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" />
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="project-card" data-category="development" data-date="2025-02">
+                    <div class="project-image">
+                        <img src="img/a&m/a&m-thumbnail-image.png" alt="A&M Electric Contractors Inc. Website"
+                            class="project-thumbnail" loading="lazy">
+                        <div class="project-date">
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                <rect x="2" y="3" width="10" height="9" rx="1" stroke="currentColor"
+                                    stroke-width="1.5" />
+                                <path d="M2 6h10M5 1v2M9 1v2" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" />
+                            </svg>
+                            Feb 2025
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="project-tag">Frontend Developer</span>
+                            <span class="project-tag">Visual Designer</span>
+                        </div>
+                        <h3 class="project-title">A&M Electric Contractors Inc. Website</h3>
+                        <p class="project-description">
+                            Co-developed a company website for an international client, translating their brand
+                            guidelines into a clear and engaging web experience.
+                        </p>
+                        <a href="html/A&M Website.html" class="project-link">
+                            View Project
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M3 8h10m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" />
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="project-card" data-category="development" data-date="2023-05">
+                    <div class="project-image">
+                        <img src="img/pleyn/pleyn-thumbnail-image.png" alt="Pleyn Clothing" class="project-thumbnail"
+                            loading="lazy">
+                        <div class="project-date">
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                <rect x="2" y="3" width="10" height="9" rx="1" stroke="currentColor"
+                                    stroke-width="1.5" />
+                                <path d="M2 6h10M5 1v2M9 1v2" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" />
+                            </svg>
+                            May 2023
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="project-tag">Designer & Developer</span>
+                        </div>
+                        <h3 class="project-title">PLEYN Clothing</h3>
+                        <p class="project-description">
+                            Created a responsive e-commerce website prototype for a startup, helping the client
+                            visualize how their online shop could look and function.
+                        </p>
+                        <a href="html/Pleyn Clothing.html" class="project-link">
+                            View Project
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M3 8h10m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" />
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="project-card" data-category="uiux" data-date="2025-12">
+                    <div class="project-image">
+                        <img src="img/projects/project-6.jpg" alt="PMGSEAC Website Redesign"
+                            class="project-thumbnail" loading="lazy">
+                        <div class="project-date">
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                <rect x="2" y="3" width="10" height="9" rx="1" stroke="currentColor"
+                                    stroke-width="1.5" />
+                                <path d="M2 6h10M5 1v2M9 1v2" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" />
+                            </svg>
+                            Dec 2025
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="project-tag">UI/UX Designer</span>
+                        </div>
+                        <h3 class="project-title">PMGSEAC Website Redesign</h3>
+                        <p class="project-description">
+                            Refreshed the PMGSEAC website with UI/UX improvements, standardized design elements, and
+                            stronger alignment with company branding.
+                        </p>
+                        <a href="html/project-page.html" class="project-link">
+                            View Project
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M3 8h10m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" />
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+                
+                <article class="project-card" data-category="graphics" data-date="2025-12">
+                    <div class="project-image">
+                        <img src="img/projects/project-6.jpg" alt="PMGSEAC Website Redesign"
+                            class="project-thumbnail" loading="lazy">
+                        <div class="project-date">
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                <rect x="2" y="3" width="10" height="9" rx="1" stroke="currentColor"
+                                    stroke-width="1.5" />
+                                <path d="M2 6h10M5 1v2M9 1v2" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" />
+                            </svg>
+                            Dec 2025
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="project-tag">UI/UX Designer</span>
+                        </div>
+                        <h3 class="project-title">Graphics Sample</h3>
+                        <p class="project-description">
+                            Refreshed the PMGSEAC website with UI/UX improvements, standardized design elements, and
+                            stronger alignment with company branding.
+                        </p>
+                        <a href="html/project-page - graphics.html" class="project-link">
+                            View Project
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M3 8h10m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" />
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+                
+            </div>
+
+            <!-- No Results Message -->
+            <!-- No Results Message -->
+            <div class="no-results" id="noResults" style="display: none;">
+                <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                    <circle cx="32" cy="32" r="30" stroke="currentColor" stroke-width="2" />
+                    <path d="M32 20v16M32 44v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+                <h3>No projects found</h3>
+                <p>Try adjusting your search or filter to find what you're looking for.</p>
+            </div>
+
+            <!-- Pagination Controls -->
+            <div class="pagination" id="pagination" style="display: none;">
+                <button class="pagination-btn pagination-prev" id="prevPage" aria-label="Previous page">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M12 16l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Previous
+                </button>
+                <div class="pagination-numbers" id="paginationNumbers">
+                    <!-- Page numbers will be inserted here by JavaScript -->
+                </div>
+                <button class="pagination-btn pagination-next" id="nextPage" aria-label="Next page">
+                    Next
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M8 4l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Divider -->
+    <div class="section-divider">
+        <div class="divider-line"></div>
+    </div>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="floating-particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <span class="section-label">Let's Connect</span>
+                    <h2 class="section-title">Get In Touch</h2>
+                    <p class="contact-description">
+                        Have a project in mind or just want to chat? Feel free to reach out.
+                        I'm always open to discussing new opportunities and collaborations.
+                    </p>
+                    <div class="contact-methods">
+                        <a href="/cdn-cgi/l/email-protection#0a626f6666654a7a65787e6c6566636524696567" class="contact-method">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <rect x="3" y="6" width="18" height="12" rx="2" stroke="currentColor"
+                                    stroke-width="2" />
+                                <path d="M3 8l9 6 9-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                            </svg>
+                            <div>
+                                <div class="method-label">Email</div>
+                                <div class="method-value"><span class="__cf_email__" data-cfemail="d0b8b5bcbcbf90a0bfa2a4b6bfbcb9bffeb3bfbd">[email&#160;protected]</span></div>
+                            </div>
+                        </a>
+                        <a href="tel:+1234567890" class="contact-method">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path
+                                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                                    stroke="currentColor" stroke-width="2" />
+                            </svg>
+                            <div>
+                                <div class="method-label">Phone</div>
+                                <div class="method-value">+1 (234) 567-890</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="social-links">
+                        <!-- <a href="#" class="social-link" aria-label="GitHub">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
+                            </svg>
+                        </a> -->
+                        <a href="https://www.linkedin.com/in/marklabucca/" class="social-link" aria-label="LinkedIn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                            </svg>
+                        </a>
+                        <!-- <a href="#" class="social-link" aria-label="Instagram">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+                            </svg>
+                        </a> -->
+                        <a href="https://www.behance.net/marklabucca" class="social-link" aria-label="Behance">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14h-8.027c.13 3.211 3.483 3.312 4.588 2.029h3.168zm-7.686-4h4.965c-.105-1.547-1.136-2.219-2.477-2.219-1.466 0-2.277.768-2.488 2.219zm-9.574 6.988h-6.466v-14.967h6.953c5.476.081 5.58 5.444 2.72 6.906 3.461 1.26 3.577 8.061-3.207 8.061zm-3.466-8.988h3.584c2.508 0 2.906-3-.312-3h-3.272v3zm3.391 3h-3.391v3.016h3.341c3.055 0 2.868-3.016.05-3.016z" />
+                            </svg>
+                        </a>
+                        <!-- <a href="#" class="social-link" aria-label="Dribbble">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c5.51 0 10-4.48 10-10S17.51 2 12 2zm6.605 4.61a8.502 8.502 0 011.93 5.314c-.281-.054-3.101-.629-5.943-.271-.065-.141-.12-.293-.184-.445a25.416 25.416 0 00-.564-1.236c3.145-1.28 4.577-3.124 4.761-3.362zM12 3.475c2.17 0 4.154.813 5.662 2.148-.152.216-1.443 1.941-4.48 3.08-1.399-2.57-2.95-4.675-3.189-5A8.687 8.687 0 0112 3.475zm-3.633.803a53.896 53.896 0 013.167 4.935c-3.992 1.063-7.517 1.04-7.896 1.04a8.581 8.581 0 014.729-5.975zM3.453 12.01v-.26c.37.01 4.512.065 8.775-1.215.25.477.477.965.694 1.453-.109.033-.228.065-.336.098-4.404 1.42-6.747 5.303-6.942 5.629a8.522 8.522 0 01-2.19-5.705zM12 20.547a8.482 8.482 0 01-5.239-1.8c.152-.315 1.888-3.656 6.703-5.337.022-.01.033-.01.054-.022a35.318 35.318 0 011.823 6.475 8.4 8.4 0 01-3.341.684zm4.761-1.465c-.086-.52-.542-3.015-1.659-6.084 2.679-.423 5.022.271 5.314.369a8.468 8.468 0 01-3.655 5.715z"/>
+                            </svg>
+                        </a> -->
+                    </div>
+                </div>
+                <form action="https://api.web3forms.com/submit" class="contact-form" id="contactForm" method="POST">
+                    <input type="hidden" name="Subject" value="New Contact Form Submission">
+                    <input type="hidden" name="access_key" value="cb61e3de-0994-4150-998d-b38d9afae083">
+                    <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="Name" required placeholder="John Doe">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email </label>
+                        <input type="email" id="email" name="Email" required placeholder="john@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="Message" rows="5" required
+                            placeholder="Tell me about your project..." maxlength="1000"></textarea>
+                        <div class="char-counter">
+                            <span id="charCount">0</span> / 1000 characters
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" id="submitBtn">
+                        <span class="btn-text">Send Message</span>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M18 2L9 11m9-9l-6 16-3-7-7-3 16-6z" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <div class="btn-loader"></div>
+                    </button>
+
+                    <div class="form-message" id="formMessage">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <path d="M22 11.08V12a10 10 0 11-5.93-9.14" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M22 4L12 14.01l-3-3" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                        <span id="messageText"></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <a href="home.html" class="footer-logo">
+                        <span style="color: #6840B8;">■</span> mc.labucca
+                    </a>
+                    <p class="footer-text">Designing with the discipline of a developer and the empathy of a user.</p>
+                    <br><br>
+                    <p class="footer-time" id="footerTime">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" class="time-icon" id="timeIcon">
+                            <!-- Sun icon (daytime) -->
+                            <circle cx="12" cy="12" r="5" fill="currentColor" class="sun-icon" />
+                            <path
+                                d="M12 1v3M12 20v3M1 12h3M20 12h3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" class="sun-icon" />
+                            <!-- Moon icon (nighttime) - hidden by default -->
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor"
+                                class="moon-icon" style="display: none;" />
+                        </svg>
+                        <span id="timeText">Loading time...</span>
+                    </p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Navigation</h4>
+                        <ul>
+                            <li><a href="home.html">Home</a></li>
+                            <li><a href="work.html">Work</a></li>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Connect</h4>
+                        <ul>
+                            <li><a href="https://www.linkedin.com/in/marklabucca/">LinkedIn</a></li>
+                            <li><a href="#">Facebook</a></li>
+                            <li><a href="https://www.behance.net/marklabucca">Behance</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Mark Labucca. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cursor Trail -->
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-outline" id="cursorOutline"></div>
+    
+    <!-- SVG Container for continuous line trails -->
+    <svg class="cursor-trail-svg" id="cursorTrailSvg" width="100%" height="100%">
+        <!-- Trail paths will be added here dynamically -->
+    </svg>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+      
+            stroke-linejoin="round" />
+        </svg>
+    </button>
+
+    <script src="js/work.js" defer></script>
+</body>
+</html>
