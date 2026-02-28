@@ -1,66 +1,77 @@
 <?php
 
+header('Content-Type: application/json');
+
 // Define your secret key
 $secretKey = '0x4AAAAAACj6DClmmYcRESU3OOjCUOrSJc0';
 
 // Get response token from the form
-$responseToken = $_POST['cf-turnstile-response'];
+$responseToken = $_POST['cf-turnstile-response'] ?? '';
+
+// Basic guard — reject immediately if no token
+if (empty($responseToken)) {
+    http_response_code(400);
+    echo json_encode(['success' => false, 'message' => 'Captcha token missing.']);
+    exit;
+}
 
 // Get user's IP address
 $remoteIP = $_SERVER['REMOTE_ADDR'];
 
 // Prepare data for the POST request
-$data = array(
-	'secret' => $secretKey,
-	'response' => $responseToken,
-	'remoteip' => $remoteIP
-);
+$data = [
+    'secret'   => $secretKey,
+    'response' => $responseToken,
+    'remoteip' => $remoteIP
+];
 
 // Initialize Curl session
 $ch = curl_init();
 
-// Set Curl options
 curl_setopt($ch, CURLOPT_URL, 'https://challenges.cloudflare.com/turnstile/v0/siteverify');
 curl_setopt($ch, CURLOPT_POST, true);
 curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-// Execute the POST request
 $response = curl_exec($ch);
-
-// Close the Curl session
 curl_close($ch);
 
-// Decode the JSON response
 $result = json_decode($response, true);
 
-// Check if verification was successful
-if ($result && isset($result['success']) && $result['success'] === true) {
-	// Verification successful, proceed with sending the email
-
-	// Set recipient email address
-	$recipient = 'mclabucca@gmail.com';
-
-	// Subject
-	$subject = 'Form Submission';
-
-	// Message
-	$message = "Name: ".$_POST['name']."\n"."Email: ".$_POST['email']."\n"."Message: ".$_POST['message'];
-
-	// Send email
-	if (mail($recipient, $subject, $message)) {
-		echo '<script>';
-		echo 'alert("Email sent successfully");';
-		echo '</script>';
-	} else {
-		echo '<script>';
-		echo 'alert("Captcha verification successful, but email could not be sent. Please try again.");';
-		echo '</script>';
-	}
-} else {
-	// Verification failed, handle error
-	echo '<script>';
-	echo 'alert("Captcha verification failed. Please try again.");';
-	echo '</script>';
+// Check if Turnstile verification passed
+if (!$result || !isset($result['success']) || $result['success'] !== true) {
+    http_response_code(400);
+    echo json_encode(['success' => false, 'message' => 'Captcha verification failed. Please try again.']);
+    exit;
 }
-?>
+
+// --- Turnstile passed — collect & sanitize fields ---
+// NOTE: HTML form uses name="Name", name="Email", name="Message" (capitalized)
+$name    = htmlspecialchars(trim($_POST['Name']    ?? ''), ENT_QUOTES, 'UTF-8');
+$email   = filter_var(trim($_POST['Email']   ?? ''), FILTER_SANITIZE_EMAIL);
+$message = htmlspecialchars(trim($_POST['Message'] ?? ''), ENT_QUOTES, 'UTF-8');
+
+if (empty($name) || empty($email) || empty($message)) {
+    http_response_code(400);
+    echo json_encode(['success' => false, 'message' => 'All fields are required.']);
+    exit;
+}
+
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    http_response_code(400);
+    echo json_encode(['success' => false, 'message' => 'Invalid email address.']);
+    exit;
+}
+
+// Send email
+$recipient = 'mclabucca@gmail.com';
+$subject   = 'New Contact Form Submission from ' . $name;
+$body      = "Name: {$name}\nEmail: {$email}\n\nMessage:\n{$message}";
+$headers   = "From: no-reply@yourdomain.com\r\nReply-To: {$email}\r\nX-Mailer: PHP/" . phpversion();
+
+if (mail($recipient, $subject, $body, $headers)) {
+    echo json_encode(['success' => true, 'message' => 'Message sent successfully!']);
+} else {
+    http_response_code(500);
+    echo json_encode(['success' => false, 'message' => 'Email could not be sent. Please try again later.']);
+}
