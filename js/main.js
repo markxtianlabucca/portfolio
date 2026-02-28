@@ -596,14 +596,13 @@ if (document.getElementById('timeText') || document.getElementById('currentTime'
 // ================================
 // Contact Form
 // ================================
-const contactForm  = document.getElementById('contactForm');
-const submitBtn    = document.getElementById('submitBtn');
-const formMessage  = document.getElementById('formMessage');
-const messageText  = document.getElementById('messageText');
-const charCount    = document.getElementById('charCount');
+const contactForm = document.getElementById('contactForm');
+const submitBtn   = document.getElementById('submitBtn');
+const formMessage = document.getElementById('formMessage');
+const messageText = document.getElementById('messageText');
+const charCount   = document.getElementById('charCount');
 const messageInput = document.getElementById('message');
 
-// Character counter
 if (messageInput && charCount) {
     messageInput.addEventListener('input', () => {
         const count = messageInput.value.length;
@@ -627,50 +626,34 @@ document.querySelectorAll('.input-icon').forEach(container => {
 if (contactForm) {
     contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-
-        // --- Turnstile guard ---
-        // The widget writes its token into a hidden input named "cf-turnstile-response".
-        // If that field is empty the visitor hasn't completed the challenge yet.
-        const turnstileToken = contactForm.querySelector('[name="cf-turnstile-response"]')?.value ?? '';
-        if (!turnstileToken) {
-            formMessage.classList.remove('success', 'show');
-            formMessage.classList.add('error', 'show');
-            messageText.textContent = '⚠️ Please complete the CAPTCHA verification before sending.';
-            return; // Stop — do NOT submit
-        }
-
-        // --- Proceed with submission ---
         submitBtn.classList.add('loading');
         submitBtn.disabled = true;
-        formMessage.classList.remove('show', 'success', 'error');
+        formMessage.classList.remove('show');
 
         try {
             const [response] = await Promise.all([
                 fetch(contactForm.action, {
                     method: 'POST',
-                    body: new FormData(contactForm)
+                    body: new FormData(contactForm),
+                    headers: { 'Accept': 'application/json' }
                 }),
                 new Promise(resolve => setTimeout(resolve, 1000)) // min UX delay
             ]);
 
-            const data = await response.json();
-
-            if (response.ok && data.success) {
+            if (response.ok) {
                 formMessage.classList.remove('error');
                 formMessage.classList.add('success', 'show');
                 messageText.textContent = '✨ Message sent successfully! I\'ll get back to you soon.';
                 contactForm.reset();
                 if (charCount) charCount.textContent = '0';
-                // Reset Turnstile widget so it can be used again
-                if (window.turnstile) window.turnstile.reset();
-                setTimeout(() => formMessage.classList.remove('show'), 6000);
+                setTimeout(() => formMessage.classList.remove('show'), 5000);
             } else {
-                throw new Error(data.message || 'Submission failed');
+                throw new Error('Submission failed');
             }
-        } catch (err) {
+        } catch {
             formMessage.classList.remove('success');
             formMessage.classList.add('error', 'show');
-            messageText.textContent = `❌ ${err.message || 'Oops! Something went wrong. Please try again.'}`;
+            messageText.textContent = '❌ Oops! Something went wrong. Please try again.';
         } finally {
             submitBtn.classList.remove('loading');
             submitBtn.disabled = false;
