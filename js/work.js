@@ -22,11 +22,20 @@ const cursorOutline = document.getElementById('cursorOutline');
 const trailContainer = document.getElementById('cursorTrailSvg');
 const svgNS = "http://www.w3.org/2000/svg";
 
+// [PERF] Skip cursor on touch devices — saves mousemove/rAF work on mobile
+const isTouchDevice = ('ontouchstart' in window) || navigator.maxTouchPoints > 0;
+if (isTouchDevice) {
+    [cursorDot, cursorOutline, trailContainer].forEach(el => { if (el) el.style.display = 'none'; });
+}
+
 let mouseX = 0, mouseY = 0;
 let outlineX = 0, outlineY = 0;
 let lastX = 0, lastY = 0;
 let trailPoints = [], currentTrailPath = null, isDrawing = false, drawingTimeout = null;
 let cursorActive = false;
+
+// [PERF] Pencil rotation constant — kept here so CSS doesn't need to set transform
+const PENCIL_ROTATION = -230;
 
 function updateSVGViewBox() {
     if (trailContainer)
@@ -35,6 +44,7 @@ function updateSVGViewBox() {
 updateSVGViewBox();
 window.addEventListener('resize', updateSVGViewBox, { passive: true });
 
+if (!isTouchDevice) {
 document.addEventListener('mousemove', (e) => {
     mouseX = e.clientX;
     mouseY = e.clientY;
@@ -64,15 +74,19 @@ document.addEventListener('mouseleave', () => {
     finishTrail();
     cursorActive = false;
 });
+} // end !isTouchDevice
 
 function animateCursor() {
     if (!cursorActive) return;
-    if (cursorDot) { cursorDot.style.left = mouseX + 'px'; cursorDot.style.top = mouseY + 'px'; }
+    // [PERF] Use transform instead of left/top — compositor-only, no layout reflow
+    if (cursorDot) {
+        const scale = cursorDot.classList.contains('hover') ? 1.3 : 1;
+        cursorDot.style.transform = `translate(${mouseX}px, ${mouseY}px) scale(${scale})`;
+    }
     if (cursorOutline) {
         outlineX += (mouseX - outlineX) * 0.2;
         outlineY += (mouseY - outlineY) * 0.2;
-        cursorOutline.style.left = outlineX + 'px';
-        cursorOutline.style.top  = outlineY + 'px';
+        cursorOutline.style.transform = `translate(${outlineX}px, ${outlineY}px) rotate(${PENCIL_ROTATION}deg)`;
     }
     requestAnimationFrame(animateCursor);
 }

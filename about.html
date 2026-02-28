@@ -18,7 +18,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="css/main.css">
-    <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- [PERF] Non-render-blocking font load: preload + async swap avoids blocking FCP/LCP -->
+    <link rel="preload" as="style"
+          href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+          onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
+    </noscript>
 </head>
 
 <body>
@@ -114,7 +120,10 @@
                         <div class="about-image-background-shape"></div>
                         <div class="about-image-frame">
                             <img src="img/about-hero-image.jpeg" alt="Mark Christian Labucca - Chen"
-                                class="about-profile-image">
+                                class="about-profile-image"
+                                fetchpriority="high"
+                                decoding="async"
+                                width="560" height="640">
                         </div>
                         <div class="about-accent-circle circle-1"></div>
                         <div class="about-accent-circle circle-2"></div>

@@ -27,6 +27,12 @@ const trailContainer = document.getElementById('cursorTrailSvg');
 
 const svgNS = "http://www.w3.org/2000/svg";
 
+// [PERF] Skip all cursor logic on touch devices — saves mousemove/rAF work on mobile
+const isTouchDevice = ('ontouchstart' in window) || navigator.maxTouchPoints > 0;
+if (isTouchDevice) {
+    [cursorDot, cursorOutline, trailContainer].forEach(el => { if (el) el.style.display = 'none'; });
+}
+
 let mouseX = 0;
 let mouseY = 0;
 let outlineX = 0;
@@ -43,6 +49,9 @@ let drawingTimeout = null;
 let cursorRAFId = null;
 let cursorActive = false;
 
+// [PERF] Pencil rotation constant — kept here so CSS doesn't need to set transform
+const PENCIL_ROTATION = -230;
+
 function updateSVGViewBox() {
     if (!trailContainer) return;
     trailContainer.setAttribute('viewBox', `0 0 ${window.innerWidth} ${window.innerHeight}`);
@@ -51,6 +60,7 @@ function updateSVGViewBox() {
 updateSVGViewBox();
 window.addEventListener('resize', updateSVGViewBox, { passive: true });
 
+if (!isTouchDevice) {
 document.addEventListener('mousemove', (e) => {
     mouseX = e.clientX;
     mouseY = e.clientY;
@@ -95,6 +105,7 @@ document.addEventListener('mouseleave', () => {
     finishTrail();
     cursorActive = false;
 });
+} // end !isTouchDevice
 
 function animateCursor() {
     if (!cursorActive) {
@@ -102,16 +113,18 @@ function animateCursor() {
         return; // Stop the loop when cursor is inactive
     }
 
+    // [PERF] Use transform instead of left/top — transform is compositor-only,
+    //        left/top trigger layout reflow every frame causing cursor lag.
     if (cursorDot) {
-        cursorDot.style.left = mouseX + 'px';
-        cursorDot.style.top = mouseY + 'px';
+        const scale = cursorDot.classList.contains('hover') ? 1.3 : 1;
+        cursorDot.style.transform = `translate(${mouseX}px, ${mouseY}px) scale(${scale})`;
     }
 
     if (cursorOutline) {
         outlineX += (mouseX - outlineX) * 0.2;
         outlineY += (mouseY - outlineY) * 0.2;
-        cursorOutline.style.left = outlineX + 'px';
-        cursorOutline.style.top = outlineY + 'px';
+        // Combine translate + pencil rotation in one transform — no layout triggered
+        cursorOutline.style.transform = `translate(${outlineX}px, ${outlineY}px) rotate(${PENCIL_ROTATION}deg)`;
     }
 
     cursorRAFId = requestAnimationFrame(animateCursor);

@@ -33,8 +33,8 @@
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 
-    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* [PERF] was `all` — now specific to avoid transitioning expensive properties */
+    --transition-slow: color 0.5s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.5s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); /* [PERF] was `all` */
 }
 
 * {
@@ -68,8 +68,8 @@ body {
     border-radius: 50%;
     border: 2px solid white;
     position: fixed;
-    top: 0;
-    left: 0;
+    top: -5px;
+    left: -5px; /* [PERF] Offset so transform:translate(x,y) centers dot on cursor point */
     pointer-events: none;
     z-index: 10000;
     transition: opacity 0.15s ease, transform 0.2s ease;
@@ -84,7 +84,7 @@ body {
 }
 
 .cursor-dot.hover {
-    transform: scale(1.3);
+    /* transform: scale(1.3) — now applied in JS animateCursor() to avoid CSS/JS transform conflicts */
     background: #8B5CF6;
 }
 
@@ -93,18 +93,16 @@ body {
     width: 24px;
     height: 60px;
     position: fixed;
-    top: -55px;
-    left: -12px;
+    top: 0;
+    left: 0; /* [PERF] Positioning via transform:translate() in JS — no layout reflow */
     pointer-events: none;
     z-index: 9999;
     transition: opacity 0.3s ease;
     opacity: 0;
     will-change: transform;
     --pencil-rotation: -230deg;
-    /* tweak this */
-    transform: rotate(var(--pencil-rotation));
-    transform-origin: 86% 53%;
-    /* pivot near the tip */
+    /* transform handled entirely in JS animateCursor() as translate(x,y)+rotate(-230deg) */
+    transform-origin: 86% 53%; /* pivot near pencil tip — JS relies on this */
 }
 
 .cursor-outline.active {
@@ -2176,4 +2174,73 @@ body.loader-active {
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     will-change: transform;
     background: var(--gray-200);
+}
+
+/* ================================================================
+   MOBILE & PERFORMANCE OPTIMIZATIONS
+   [PERF] Appended — does not affect desktop styles
+   ================================================================ */
+
+/* Eliminate 300ms tap delay on all interactive elements */
+a, button, .btn, .filter-chip, .nav-toggle, .project-card,
+.back-to-top, .social-link, .social-link-card, .pagination-number,
+.pagination-btn, input, textarea, select, label {
+    touch-action: manipulation;
+}
+
+@media (max-width: 768px) {
+    /* Remove GPU layer hints on elements that don't animate on mobile */
+    .cursor-dot, .cursor-outline, .cursor-sketch,
+    .floating-card, .image-glow {
+        will-change: auto;
+    }
+
+    /* Replace expensive backdrop-filter with solid fallback on mobile */
+    .navbar, .nav-menu {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        background-color: rgba(17, 17, 17, 0.97) !important;
+    }
+
+    /* Simplify box-shadows to reduce paint cost */
+    .project-card, .process-step, .skill-category, .stat-item,
+    .contact-card, .form-card, .availability-card,
+    .contact-methods-card, .social-card {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12) !important;
+    }
+
+    /* CSS containment — prevents card/section reflow from cascading up the tree */
+    .projects-grid, .design-process, .about-skills,
+    .tech-stack-section, .contact-section {
+        contain: layout style;
+    }
+
+    /* Avoid painting background shapes that are invisible at mobile sizes */
+    .bg-shape, .dots-pattern::before, .grid-background::before {
+        display: none;
+    }
+
+    /* Lazy-render off-screen images */
+    img {
+        content-visibility: auto;
+    }
+}
+
+/* Hide decorative particles & floating cards on small screens */
+@media (max-width: 480px) {
+    .floating-particles, .floating-card,
+    .image-accent-circle, .image-glow, .scroll-indicator {
+        display: none;
+    }
+}
+
+/* Respect system reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    .page-loader { display: none !important; }
 }
