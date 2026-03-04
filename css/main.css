@@ -4469,7 +4469,7 @@ a, button, .btn, .filter-chip, .nav-toggle, .project-card,
 
 /* Hide only non-essential particle effects on very small screens */
 @media (max-width: 480px) {
-    .floating-particles, .circle-1{
+    .floating-particles, .circle-1, .interests-showcase {
         display: none;
     }
 }

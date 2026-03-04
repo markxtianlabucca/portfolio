@@ -18,10 +18,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
-    <link rel="stylesheet" href="css/project-page.css">
-    <link
+    <link rel="stylesheet" href="../css/project-page.css">
+    <!-- [PERF] Non-render-blocking font load: preload + async swap avoids blocking FCP/LCP -->
+    <link rel="preload" as="style"
         href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
-        rel="stylesheet">
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
+    </noscript>
 </head>
 
 <body>
@@ -36,7 +41,7 @@
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="container nav-container">
-            <a href="home.html" class="logo">
+            <a href="../home.html" class="logo">
                 <span style="color: #6840B8;">■</span> mc.labucca
             </a>
             <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
@@ -45,10 +50,10 @@
                 <span></span>
             </button>
             <ul class="nav-menu" id="navMenu">
-                <li><a href="home.html" class="nav-link">Home</a></li>
-                <li><a href="work.html" class="nav-link">Work</a></li>
-                <li><a href="about.html" class="nav-link active">About</a></li>
-                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="../home.html" class="nav-link">Home</a></li>
+                <li><a href="../work.html" class="nav-link">Work</a></li>
+                <li><a href="../about.html" class="nav-link active">About</a></li>
+                <li><a href="../contact.html" class="nav-link">Contact</a></li>
                 <li><a href="https://forms.gle/L765wte7jkqrr68J8" target="_blank" rel="noopener noreferrer"
                         class="nav-cta">
                         <span>Start a Project</span>
@@ -66,7 +71,7 @@
         <div class="container">
             <!-- Breadcrumbs -->
             <nav class="breadcrumb" aria-label="Breadcrumb">
-                <a href="work.html" class="breadcrumb-link">Work</a>
+                <a href="../work.html" class="breadcrumb-link">Work</a>
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="breadcrumb-separator">
                     <path d="M6 12l4-4-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round" />
@@ -75,24 +80,25 @@
             </nav>
 
             <!-- CUSTOMIZATION: Only update the project name here — breadcrumb updates automatically -->
-            <h1 class="project-name" id="projectName">Pleyn Clothing</h1> <br>
+            <h1 class="project-name" id="projectName">Lunas Talaan Mobile Application</h1> <br>
             <!-- Project Action Buttons -->
             <!-- CUSTOMIZATION: Update button text and links as needed (Live Site, Figma, Slide Deck, etc.) -->
             <div class="project-actions">
-                <a href="https://mark-labucca.github.io/HCI.PROJECT-PLEYN/html/home.html" target="_blank"
-                    rel="noopener noreferrer" class="project-btn project-btn-primary">
-                    <span>View Live Site</span>
+                <a href="https://apkpure.com/lunastalaan/com.lunastalaan.app" target="_blank" rel="noopener noreferrer"
+                    class="project-btn project-btn-primary">
+                    <span>Download App</span>
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                         <path d="M6 3h7m0 0v7m0-7L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                             stroke-linejoin="round" />
                     </svg>
                 </a>
-                <!-- <a href="#" target="_blank" rel="noopener noreferrer" class="project-btn project-btn-secondary">
-                    <span>View Slide Deck</span>
+                <a href="#" target="_blank" rel="noopener noreferrer" class="project-btn project-btn-secondary">
+                    <span>View Website</span>
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                        <path d="M6 3h7m0 0v7m0-7L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M6 3h7m0 0v7m0-7L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
                     </svg>
-                </a> -->
+                </a>
             </div>
         </div>
     </section>
@@ -101,9 +107,14 @@
     <section class="project-hero">
         <div class="container">
             <!-- CUSTOMIZATION: Replace with your hero image (recommended: 1920x1080px) -->
+            <!-- To HIDE the zoom icon, add 'hide-zoom-icon' class to the image -->
             <div class="hero-image-container">
-                <img src="img/pleyn/pleyn-hero-image.png" alt="Project Hero Image" class="hero-image">
-                <!-- <video src="../img/2026-02-11 20-00-57.mkv" class="hero-image" autoplay muted loop playsinline></video> -->
+                <iframe class="hero-image"
+                    src="https://www.youtube.com/embed/VyKKWtaGeXk?autoplay=1&mute=1&loop=1&playlist=VyKKWtaGeXk"
+                    title="Lunas Talaan AVP By Coding Brigade" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <div class="iframe-overlay"></div>
             </div>
         </div>
     </section>
@@ -115,23 +126,23 @@
                 <!-- CUSTOMIZATION: Update each meta item -->
                 <div class="meta-item">
                     <h3 class="meta-label">Duration</h3>
-                    <p class="meta-value">May 2023</p>
+                    <p class="meta-value">Dec 2023 - Dec 2024</p>
                 </div>
                 <div class="meta-item">
                     <h3 class="meta-label">Industry</h3>
-                    <p class="meta-value">Clothing and Apparel</p>
+                    <p class="meta-value">Pharmaceutical & Healthcare</p>
                 </div>
                 <div class="meta-item">
                     <h3 class="meta-label">Role</h3>
-                    <p class="meta-value">Designer & Developer</p>
+                    <p class="meta-value">Project Manager & UI/UX Designer</p>
                 </div>
-                <!-- <div class="meta-item">
-                    <h3 class="meta-label">Team</h3>
-                    <p class="meta-value">2 Designers, 3 Developers, 1 PM</p>
-                </div> -->
                 <div class="meta-item">
                     <h3 class="meta-label">Tools Used</h3>
-                    <p class="meta-value">HTML, CSS, and JavaScript</p>
+                    <p class="meta-value">Figma, Trello, Flutter, and Firebase</p>
+                </div>
+                <div class="meta-item">
+                    <h3 class="meta-label">Team</h3>
+                    <p class="meta-value">1 Project Manager & UI/UX Designer<br>1 Frontend Developer <br> 1 Backend Developer</p>
                 </div>
             </div>
         </div>
@@ -144,27 +155,35 @@
 
             <!-- CUSTOMIZATION: Write your project overview (2-3 paragraphs) -->
             <div class="section-content">
-                <p>Pleyn is a local clothing and apparel brand with a growing presence on social media. This was an
-                    academic project where I connected with the client who needed a simple, well-designed website
-                    prototype to represent their brand online. Inspired by the aesthetic of <a
-                        href="https://dbtkco.com/" target="_blank" rel="noopener noreferrer"
-                        style="color: blue; text-decoration: underline; text-underline-offset: 3px;">
-                        DBTK
-                    </a>, the site was built to feel clean, bold, and on-brand.</p>
+                <p>Lunas Talaan is a thesis project developed alongside two colleagues, a mobile application designed
+                    to help users stay on top of their medication schedules and make more informed decisions about where
+                    to buy their medicines. The name itself reflects its purpose: <i>lunas (cure/remedy)</i> and
+                    <i>talaan
+                        (record/list),</i> a record that keeps you on track with your health.
+                </p>
 
-                <p>This was a solo project; I handled both the design and frontend development from start to finish,
-                    working with images provided by the client to bring the prototype to life.</p>
+                <p>Beyond just setting reminders, the app uses web scrapers to pull real-time medicine prices, giving
+                    users the ability to compare costs across pharmacies without having to leave the app. My role in
+                    this project went far beyond design — I led the overall development process, handled UI/UX from
+                    concept to final screens, managed the team, drove marketing efforts to reach actual users, deployed
+                    the app to Amazon Appstore and APKPure, built the promotional website, and produced all supporting
+                    documentation including the user manual.</p>
+
+                <p>The project went on to place <b>20th in Appcon 2023's Application Development Competition</b>
+                    organized by
+                    Otis Japan Inc., and I was awarded <b>Best Research Paper Presenter</b> at IRCITE 2025 for
+                    presenting the thesis behind it.</p>
             </div>
 
             <!-- Project Tags -->
             <!-- CUSTOMIZATION: Add/remove tags as needed -->
             <div class="projectpage-tags">
-                <span class="tag">Web Design</span>
-                <span class="tag">Frontend Development</span>
-                <span class="tag">Prototype</span>
-                <span class="tag">Academic Project</span>
-                <span class="tag">Clothing & Apparel</span>
-                <span class="tag">Responsive Design</span>
+                <span class="tag">UI/UX Design</span>
+                <span class="tag">Mobile App</span>
+                <span class="tag">Thesis Project</span>
+                <span class="tag">Health Tech</span>
+                <span class="tag">Project Management</span>
+                <span class="tag">App Deployment</span>
             </div>
         </div>
     </section>
@@ -176,16 +195,17 @@
 
             <!-- CUSTOMIZATION: Describe the problem -->
             <div class="section-content">
-                <p>Pleyn had a social media presence, but no website to call their own, and they needed a starting point
-                    to change that.</p>
+                <p>Medication non-adherence is a quiet but serious problem, and the barriers go beyond simply forgetting
+                    to take a pill.</p>
 
                 <ul class="content-list">
-                    <li>The brand existed online through social media but had no dedicated website to showcase their
-                        collections properly.</li>
-                    <li>Without a site, there was no central space for customers to browse products, check sizing, or
-                        learn more about the brand.</li>
-                    <li>They needed a working prototype that could serve as the foundation for a <b>future full-scale
-                            build.</b></li>
+                    <li>Many patients, especially those managing chronic conditions, struggle to keep up with complex,
+                        multi-medication schedules with no reliable system to track them.</li>
+                    <li>There was no straightforward way for everyday users to check and compare medicine prices across
+                        pharmacies — requiring physical visits or manual searching just to find the best deal.</li>
+                    <li>Existing medication reminder apps were either too generic, too cluttered, or simply didn't
+                        account for the local context of Filipino users and the way medicines are priced and distributed
+                        here.</li>
                 </ul>
             </div>
         </div>
@@ -198,20 +218,18 @@
 
             <!-- CUSTOMIZATION: Describe your solution -->
             <div class="section-content">
-                <p>The goal was simple: give Pleyn a prototype that looked and felt like a real clothing brand website.
-                </p>
+                <p>We built Lunas Talaan to close that gap, a mobile app that combines smart scheduling with real-time
+                    price awareness, all wrapped in a UI that doesn't require a user manual to navigate.</p>
 
                 <ul class="content-list">
-                    <li>Designed and developed the full prototype solo, covering all key pages: Home, Shop, Size Chart,
-                        FAQ, and About Us.</li>
-                    <li>Drew inspiration from DBTK's aesthetic to align with the brand's visual direction — bold,
-                        minimal, and streetwear-forward.</li>
-                    <li>Used client-provided images and built the layout around them to keep the brand's identity front
-                        and center.</li>
-                    <li>Ensured the prototype was responsive, so the experience translated well across desktop and
-                        mobile devices.</li>
-                    <li>Kept the design clean and navigable, making it easy for potential customers to browse
-                        collections and find what they need.</li>
+                    <li>Designed a clean, accessible mobile UI tailored for users who may not be highly tech-savvy,
+                        applying UX principles to reduce friction in the onboarding and scheduling flows.</li>
+                    <li>Built a medication scheduling system with customizable reminders, letting users set doses,
+                        frequency, and timing with minimal steps.</li>
+                    <li>Integrated web scrapers to surface real-time medicine prices from local pharmacies, giving users
+                        the ability to compare costs and make more affordable choices.</li>
+                    <li>Developed the app for cross-platform deployment and published it on both the Amazon Appstore and
+                        APKPure to maximize accessibility.</li>
                 </ul>
             </div>
         </div>
@@ -220,8 +238,8 @@
     <!-- My Design Process -->
     <section class="project-section bg-light">
         <div class="container">
-            <h2 class="section-title">Visual Showcase</h2>
-            <p class="section-subtitle">See how the site came together</p>
+            <h2 class="section-title">My Design Process</h2>
+            <p class="section-subtitle">A closer look at how I approached and executed this project.</p>
 
             <!-- 
                 ============================================================
@@ -232,12 +250,15 @@
                 1. Copy the <img> tag below
                 2. Paste it as many times as you need
                 3. Update the src and alt text
-                4. Images will automatically be full-width and responsive
+                4. Add 'zoomable' class to make image clickable
+                5. Images will automatically be full-width and responsive
                 
-                Example:
-                <img src="../assets/projects/process-step-1.jpg" alt="Empathize Phase" class="process-image">
-                <img src="../assets/projects/process-step-2.jpg" alt="Define Phase" class="process-image">
-                <img src="../assets/projects/process-step-3.jpg" alt="Ideate Phase" class="process-image">
+                Example with zoom icon visible:
+                <img src="../assets/projects/process-step-1.jpg" alt="Empathize Phase" class="process-image zoomable">
+                <img src="../assets/projects/process-step-2.jpg" alt="Define Phase" class="process-image zoomable">
+                
+                Example with zoom icon HIDDEN (add 'hide-zoom-icon' class):
+                <img src="../assets/projects/process-step-3.jpg" alt="Ideate Phase" class="process-image zoomable hide-zoom-icon">
                 
                 Recommended image size: 1200px width minimum
                 ============================================================
@@ -245,16 +266,20 @@
 
             <div class="process-images">
                 <!-- CUSTOMIZATION: Add your process images here -->
-                <img src="img/pleyn/pleyn-showcase-one.png" alt="Design Process Step 1" class="process-image">
-                <img src="img/pleyn/pleyn-showcase-two.png" alt="Design Process Step 1" class="process-image">
-                <img src="img/pleyn/pleyn-showcase-three.png" alt="Design Process Step 1" class="process-image">
-                <img src="img/pleyn/pleyn-showcase-four.png" alt="Design Process Step 1" class="process-image">
-                <img src="img/pleyn/pleyn-showcase-five.png" alt="Design Process Step 1" class="process-image">
-                <img src="img/pleyn/screencapture-mark-labucca-github-io-HCI-PROJECT-PLEYN-html-home-html-2026-02-27-09_15_53.png"
-                    alt="Design Process Step 1" class="process-image">
-
+                <img src="../img/lunastalaan/lt-showcase-one.png" alt="lt-showcase" class="process-image zoomable">
+                <img src="../img/lunastalaan/lt-showcase-two.png" alt="lt-showcase" class="process-image zoomable">
+                <img src="../img/lunastalaan/lt-showcase-three.png" alt="lt-showcase" class="process-image zoomable">
+                <img src="../img/lunastalaan/lt-showcase-four.png" alt="lt-showcase" class="process-image zoomable">
+                <img src="../img/lunastalaan/lt-showcase-five.png" alt="lt-showcase" class="process-image zoomable">
+                <img src="../img/lunastalaan/lt-showcase-six.png" alt="lt-showcase" class="process-image zoomable">
+                <img src="../img/lunastalaan/lt-showcase-seven.png" alt="lt-showcase" class="process-image zoomable">
+                <img src="../img/lunastalaan/lt-showcase-eight.png" alt="lt-showcase" class="process-image zoomable">
+                <img src="../img/lunastalaan/lt-showcase-nine.png" alt="lt-showcase" class="process-image zoomable">
+                <img src="../img/lunastalaan/lt-showcase-ten.png" alt="lt-showcase" class="process-image zoomable">
+                <img src="../img/lunastalaan/lt-showcase-eleven.png" alt="lt-showcase" class="process-image zoomable">
+                <img src="../img/lunastalaan/lt-showcase-twelve.png" alt="lt-showcase" class="process-image zoomable">
+                <img src="../img/lunastalaan/lt-showcase-thirteen.png" alt="lt-showcase" class="process-image zoomable">
             </div>
-
         </div>
     </section>
 
@@ -265,28 +290,35 @@
 
             <!-- CUSTOMIZATION: Write your conclusion -->
             <div class="section-content">
-                <p>This project gave Pleyn a real starting point, a prototype that captures the brand's identity and
-                    lays the groundwork for a full website down the line.</p>
+                <p>Lunas Talaan was the most complete project I had worked on at that point — and the most demanding.
+                    Managing the full scope of a thesis project while also being the sole designer meant I had to
+                    constantly context-switch between big-picture thinking and pixel-level decisions. That tension
+                    pushed me to become a much sharper, more intentional leader and designer.</p>
 
-                <p>Working on this solo sharpened my skills in designing for responsiveness. Knowing that users would
-                    view the site across different devices pushed me to think carefully about how every layout choice
-                    would hold up, from desktop to tablet to mobile. It's a mindset I now carry into every project I
-                    take on.</p>
+                <p>One of the biggest things this project taught me was how to design with real constraints in mind —
+                    limited screen real estate, diverse user literacy levels, and the need to make health-critical
+                    information immediately readable. Getting the balance right between functionality and simplicity
+                    wasn't easy, but it was one of the most rewarding design challenges I've worked through.</p>
+
+                <p>Working across mobile UI also deepened my ability to navigate responsive design thinking. Designing
+                    for different device sizes, screen densities, and Android display configurations trained me to think
+                    in systems rather than single screens — making sure every layout, component, and interaction felt
+                    consistent and intentional no matter the device it landed on.</p>
             </div>
 
             <!-- Results/Metrics (optional) -->
             <div class="results-grid">
                 <div class="result-card">
-                    <div class="result-number">100%</div>
-                    <p class="result-label">Solo Execution</p>
+                    <div class="result-number">20th</div>
+                    <p class="result-label">Placement to a national-level competition</p>
                 </div>
                 <div class="result-card">
-                    <div class="result-number">5</div>
-                    <p class="result-label">Total Pages Built</p>
+                    <div class="result-number">2</div>
+                    <p class="result-label">Platform Deployments</p>
                 </div>
                 <div class="result-card">
-                    <div class="result-number">3</div>
-                    <p class="result-label">Device Breakpoints</p>
+                    <div class="result-number">1,000+</div>
+                    <p class="result-label">Total Installs & Website Views</p>
                 </div>
             </div>
         </div>
@@ -336,8 +368,8 @@
     <!-- Suggested Projects -->
     <section class="project-section bg-light">
         <div class="container">
-            <h2 class="section-title">More Projects</h2>
-            <p class="section-subtitle">Check out these related projects</p>
+            <h2 class="section-title">Must-See Projects</h2>
+            <p class="section-subtitle">A curated selection of my top projects.</p>
 
             <!-- 
                 ============================================================
@@ -349,8 +381,8 @@
                 <!-- Project Card 1 -->
                 <article class="project-card" data-category="development uiux" data-date="2025-06" data-featured="true">
                     <div class="project-image">
-                        <img src="img/project-1.jpg"
-                            alt="Iram II Elementary School Student Transcript and Academic Records System"
+                        <img src="../img/iram/iram-thumbnail-image.png"
+                            alt="Iram II Elementary School - Student Transcript and Academic Records System"
                             class="project-thumbnail" loading="lazy">
                         <div class="project-date">
                             <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -367,13 +399,13 @@
                             <span class="project-tag">Project Manager</span>
                             <span class="project-tag">Lead Designer</span>
                         </div>
-                        <h3 class="project-title">Iram II Elementary School Student Transcript and Academic Records
+                        <h3 class="project-title">Iram II Elementary School - Student Transcript and Academic Records
                             System</h3>
                         <p class="project-description">
                             Directed design and development of a desktop system for a local public elementary
                             school, improving access to 200+ student records and replacing manual processes.
                         </p>
-                        <a href="#" class="project-link">
+                        <a href="iram-desktop-system.html" class="project-link">
                             View Project
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                                 <path d="M3 8h10m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="1.5"
@@ -385,7 +417,7 @@
 
                 <article class="project-card" data-category="development uiux" data-date="2025-08" data-featured="true">
                     <div class="project-image">
-                        <img src="img/projects/project-2.jpg" alt="Planate Management Group Support Center"
+                        <img src="../img/pmgsc/pmgsc-thumbnail-image.png" alt="Planate Management Group Support Center"
                             class="project-thumbnail" loading="lazy">
                         <div class="project-date">
                             <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -394,7 +426,7 @@
                                 <path d="M2 6h10M5 1v2M9 1v2" stroke="currentColor" stroke-width="1.5"
                                     stroke-linecap="round" />
                             </svg>
-                            Jun - Aug 2025
+                            Apr - Nov 2025
                         </div>
                     </div>
                     <div class="project-content">
@@ -407,7 +439,7 @@
                             Led overall UX design and supported frontend development for an in-house ticketing
                             system of Planate Management Group, streamlining support requests across 500+ employees.
                         </p>
-                        <a href="#" class="project-link">
+                        <a href="pmgsc-ticketing-system.html" class="project-link">
                             View Project
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                                 <path d="M3 8h10m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="1.5"
@@ -417,9 +449,9 @@
                     </div>
                 </article>
 
-                <article class="project-card" data-category="uiux development" data-date="2024-01" data-featured="true">
+                <!-- <article class="project-card" data-category="uiux development" data-date="2024-12" data-featured="true">
                     <div class="project-image">
-                        <img src="img/projects/project-3.jpg" alt="Lunas Talaan Mobile Application"
+                        <img src="img/lunastalaan/lt-thumbnail-image.png" alt="Lunas Talaan Mobile Application"
                             class="project-thumbnail" loading="lazy">
                         <div class="project-date">
                             <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -428,7 +460,7 @@
                                 <path d="M2 6h10M5 1v2M9 1v2" stroke="currentColor" stroke-width="1.5"
                                     stroke-linecap="round" />
                             </svg>
-                            Jan 2024
+                            Dec 2024
                         </div>
                     </div>
                     <div class="project-content">
@@ -442,7 +474,7 @@
                             manage their medications, reaching 1,000+ installs across APKPure and
                             Amazon Appstore.
                         </p>
-                        <a href="#" class="project-link">
+                        <a href="lunas-talaan.html" class="project-link">
                             View Project
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                                 <path d="M3 8h10m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="1.5"
@@ -450,12 +482,12 @@
                             </svg>
                         </a>
                     </div>
-                </article>
+                </article> -->
             </div>
 
             <!-- Back to Work Link -->
             <div class="section-footer">
-                <a href="work.html" class="btn btn-outline">
+                <a href="../work.html" class="btn btn-outline">
                     View All Projects
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                         <path d="M4 10h12m0 0l-5-5m5 5l-5 5" stroke="currentColor" stroke-width="2"
@@ -514,8 +546,7 @@
                         I'm always open to discussing new opportunities and collaborations.
                     </p>
                     <div class="contact-methods">
-                        <a href="/cdn-cgi/l/email-protection#f8909d949497b888978a8c9e97949197d69b9795"
-                            class="contact-method">
+                        <a href="mailto:mclabucca@gmail.com" class="contact-method">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                                 <rect x="3" y="6" width="18" height="12" rx="2" stroke="currentColor"
                                     stroke-width="2" />
@@ -523,12 +554,10 @@
                             </svg>
                             <div>
                                 <div class="method-label">Email</div>
-                                <div class="method-value"><span class="__cf_email__"
-                                        data-cfemail="1b737e7777745b6b74696f7d7477727435787476">[email&#160;protected]</span>
-                                </div>
+                                <div class="method-value">mclabucca@gmail.com</div>
                             </div>
                         </a>
-                        <a href="tel:+1234567890" class="contact-method">
+                        <a href="tel:+639458921651" class="contact-method">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                                 <path
                                     d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
@@ -536,7 +565,7 @@
                             </svg>
                             <div>
                                 <div class="method-label">Phone</div>
-                                <div class="method-value">+1 (234) 567-890</div>
+                                <div class="method-value">(+63) 945 892 1651</div>
                             </div>
                         </a>
                     </div>
@@ -627,7 +656,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-left">
-                    <a href="home.html" class="footer-logo">
+                    <a href="../home.html" class="footer-logo">
                         <span style="color: #6840B8;">■</span> mc.labucca
                     </a>
                     <p class="footer-text">Designing with the discipline of a developer and the empathy of a user.</p>
@@ -650,10 +679,10 @@
                     <div class="footer-column">
                         <h4>Navigation</h4>
                         <ul>
-                            <li><a href="home.html">Home</a></li>
-                            <li><a href="work.html">Work</a></li>
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="../home.html">Home</a></li>
+                            <li><a href="../work.html">Work</a></li>
+                            <li><a href="../about.html">About</a></li>
+                            <li><a href="../contact.html">Contact</a></li>
                         </ul>
                     </div>
                     <div class="footer-column">
@@ -693,7 +722,7 @@
         </svg>
     </button>
 
-    <script src="js/project-page.js" defer></script>
+    <script src="../js/project-page.js" defer></script>
 </body>
 
 </html>
