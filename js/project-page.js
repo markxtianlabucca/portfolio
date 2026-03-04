@@ -16,6 +16,7 @@
 // Reads from #projectName h1, auto-fills
 // breadcrumb and page <title>
 // ================================
+
 document.addEventListener('DOMContentLoaded', () => {
     const projectName = document.getElementById('projectName');
     const breadcrumbCurrent = document.getElementById('breadcrumbCurrent');
@@ -90,6 +91,18 @@ document.addEventListener('mouseleave', () => {
     trailContainer?.classList.remove('active');
     finishTrail();
     cursorActive = false;
+});
+// Hide cursor when hovering over iframe
+document.querySelectorAll('iframe').forEach(iframe => {
+    iframe.addEventListener('mouseenter', () => {
+        cursorDot.style.opacity = '0';
+        cursorOutline.style.opacity = '0';
+    });
+
+    iframe.addEventListener('mouseleave', () => {
+        cursorDot.style.opacity = '1';
+        cursorOutline.style.opacity = '1';
+    });
 });
 } // end !isTouchDevice
 
