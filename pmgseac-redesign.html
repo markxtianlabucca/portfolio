@@ -4,26 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Work - Mark Christian Labucca</title>
-    <meta name="description" content="Portfolio of UI/UX design, graphic design, and front-end development projects by Mark Christian Labucca.">
-    <meta property="og:title"       content="Work — Mark Christian Labucca">
-    <meta property="og:description" content="Browse UI/UX, branding, and development projects by Mark Christian Labucca.">
-    <meta property="og:image"       content="https://yourdomain.com/img/og-preview.jpg">
-    <meta property="og:url"         content="https://yourdomain.com/work.html">
-    <meta property="og:type"        content="website">
-    <meta name="twitter:card"       content="summary_large_image">
+    <title>Project - Mark Christian Labucca</title>
+    <meta name="description"
+        content="A detailed case study of a design and development project by Mark Christian Labucca.">
+    <meta property="og:title" content="Project — Mark Christian Labucca">
+    <meta property="og:description" content="Design and development case study by Mark Christian Labucca.">
+    <meta property="og:image" content="https://yourdomain.com/img/og-preview.jpg">
+    <meta property="og:url" content="https://yourdomain.com/project-page.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" type="image/png" sizes="32x32" href="img/mc-favicon.png">
     <!-- PERF: preconnect BEFORE stylesheet so the connection warms up immediately -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
-    <link rel="stylesheet" href="css/work.css">
+    <link rel="stylesheet" href="css/project-page.css">
     <!-- [PERF] Non-render-blocking font load: preload + async swap avoids blocking FCP/LCP -->
     <link rel="preload" as="style"
-          href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
-          onload="this.onload=null;this.rel='stylesheet'">
+        href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        onload="this.onload=null;this.rel='stylesheet'">
     <noscript>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
     </noscript>
 </head>
 
@@ -49,10 +51,11 @@
             </button>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="home.html" class="nav-link">Home</a></li>
-                <li><a href="work.html" class="nav-link active">Work</a></li>
-                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="work.html" class="nav-link">Work</a></li>
+                <li><a href="about.html" class="nav-link active">About</a></li>
                 <li><a href="contact.html" class="nav-link">Contact</a></li>
-                <li><a href="https://forms.gle/L765wte7jkqrr68J8" target="_blank" rel="noopener noreferrer" class="nav-cta">
+                <li><a href="https://forms.gle/L765wte7jkqrr68J8" target="_blank" rel="noopener noreferrer"
+                        class="nav-cta">
                         <span>Start a Project</span>
                         <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
                             <path d="M3 9h12m0 0l-5-5m5 5l-5 5" stroke="currentColor" stroke-width="2"
@@ -62,99 +65,300 @@
             </ul>
         </div>
     </nav>
-    <br><br>
-    <!-- Featured Works Section -->
-    <section class="projects" id="projects">
-        <div class="grid-background"></div>
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">My Work</span>
-                <h2 class="section-title">The Collection</h2>
-                <p class="section-description">Take a look at what I’ve been up to, and feel free to filter them to see exactly what you’re looking for.</p>
-            </div>
 
-            <!-- Search Bar -->
-            <div class="project-search-container">
-                <div class="search-bar">
-                    <svg class="search-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                        <circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="2" />
-                        <path d="M14 14l4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+    <!-- Breadcrumbs & Project Header -->
+    <section class="project-intro">
+        <div class="container">
+            <!-- Breadcrumbs -->
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <a href="work.html" class="breadcrumb-link">Work</a>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="breadcrumb-separator">
+                    <path d="M6 12l4-4-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+                <span class="breadcrumb-current" id="breadcrumbCurrent"></span>
+            </nav>
+
+            <!-- CUSTOMIZATION: Only update the project name here — breadcrumb updates automatically -->
+            <h1 class="project-name" id="projectName">PMGSEAC Website Redesign</h1> <br>
+            <!-- Project Action Buttons -->
+            <!-- CUSTOMIZATION: Update button text and links as needed (Live Site, Figma, Slide Deck, etc.) -->
+            <div class="project-actions">
+                <a href="#" target="_blank" rel="noopener noreferrer" class="project-btn project-btn-primary">
+                    <span>View Figma</span>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M6 3h7m0 0v7m0-7L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
                     </svg>
-                    <input type="text" id="projectSearch" class="search-input"
-                        placeholder="Search projects by name or keyword..." autocomplete="off">
-                    <button class="search-clear" id="searchClear" style="display: none;">
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                            <path d="M12 4L4 12M4 4l8 8" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" />
-                        </svg>
-                    </button>
+                </a>
+                <a href="#" target="_blank" rel="noopener noreferrer" class="project-btn project-btn-secondary">
+                    <span>View Current Site</span>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M6 3h7m0 0v7m0-7L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hero Image -->
+    <section class="project-hero">
+        <div class="container">
+            <!-- CUSTOMIZATION: Replace with your hero image (recommended: 1920x1080px) -->
+            <!-- To HIDE the zoom icon, add 'hide-zoom-icon' class to the image -->
+            <div class="hero-image-container">
+                <img src="img/for-hero-image.png" alt="Project Hero Image" class="hero-image">
+                <!-- <video src="../img/2026-02-11 20-00-57.mkv" class="hero-image" autoplay muted loop playsinline></video> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Meta Info -->
+    <section class="project-meta">
+        <div class="container">
+            <div class="meta-grid">
+                <!-- CUSTOMIZATION: Update each meta item -->
+                <div class="meta-item">
+                    <h3 class="meta-label">Duration</h3>
+                    <p class="meta-value">1 Month</p>
+                </div>
+                <div class="meta-item">
+                    <h3 class="meta-label">Industry</h3>
+                    <p class="meta-value">Business-to-Business (B2B)</p>
+                </div>
+                <div class="meta-item">
+                    <h3 class="meta-label">Role</h3>
+                    <p class="meta-value">UI/UX Designer</p>
+                </div>
+                <!-- <div class="meta-item">
+                    <h3 class="meta-label">Team</h3>
+                    <p class="meta-value">2 Designers, 3 Developers, 1 PM</p>
+                </div> -->
+                <div class="meta-item">
+                    <h3 class="meta-label">Tools Used</h3>
+                    <p class="meta-value">Figma, Canva, and Google Lighthouse</p>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- Project Filters -->
-            <div class="project-filters">
-                <button class="filter-chip active" data-filter="all">
-                    All Projects
-                </button>
+    <!-- Overview -->
+    <section class="project-section">
+        <div class="container">
+            <h2 class="section-title">Overview</h2>
 
-                <button class="filter-chip" data-filter="featured">
-                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                        <path d="M9 2l2.163 4.382 4.837.705-3.5 3.41.826 4.816L9 13.18l-4.326 2.134.826-4.816-3.5-3.41 4.837-.705L9 2z" 
-                              fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    Top Picks
-                </button>
-                
-                <button class="filter-chip" data-filter="uiux">
-                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                        <rect x="2" y="4" width="6" height="10" rx="1" stroke="currentColor" stroke-width="2" />
-                        <rect x="10" y="4" width="6" height="10" rx="1" stroke="currentColor" stroke-width="2" />
-                    </svg>
-                    UI/UX Design
-                </button>
-                <button class="filter-chip" data-filter="graphics">
-                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                        <rect x="3" y="3" width="12" height="12" rx="2" stroke="currentColor" stroke-width="2" />
-                        <path d="M3 6h12M6 3v12" stroke="currentColor" stroke-width="2" />
-                    </svg>
-                    Graphics Design
-                </button>
-                <button class="filter-chip" data-filter="development">
-                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                        <path d="M5 7l-3 3 3 3M13 7l3 3-3 3M11 4L7 14" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                    Development
-                </button>
-                <button class="filter-chip" data-filter="others">
-                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                        <circle cx="9" cy="4" r="2" fill="currentColor" />
-                        <circle cx="9" cy="9" r="2" fill="currentColor" />
-                        <circle cx="9" cy="14" r="2" fill="currentColor" />
-                    </svg>
-                    Others
-                </button>
+            <!-- CUSTOMIZATION: Write your project overview (2-3 paragraphs) -->
+            <div class="section-content">
+                <p>Planate Management Group South East Asia Corporation (PMGSEAC) is a professional services firm based
+                    in Subic Bay, Philippines, offering engineering, architecture, construction management, IT, and
+                    business support solutions to clients across the globe. Despite being an established company with a
+                    strong service offering, their website wasn't doing them justice.</p>
+
+                <p>This was a solo UI/UX project focused on redesigning the existing PMGSEAC website — improving the
+                    overall user experience, tightening the visual design, aligning with UX laws, and driving more
+                    conversions, all while staying true to the company's existing branding.</p>
             </div>
 
-            <div class="projects-grid">
-                <!-- 
-                ========================================
-                HOW TO MARK PROJECTS AS "TOP PICKS":
-                ========================================
-                Simply add data-featured="true" to any project card you want to feature.
+            <!-- Project Tags -->
+            <!-- CUSTOMIZATION: Add/remove tags as needed -->
+            <div class="projectpage-tags">
+                <span class="tag">UI/UX Design</span>
+                <span class="tag">Website Redesign</span>
+                <span class="tag">UX Audit</span>
+                <span class="tag">Conversion Optimization</span>
+                <span class="tag">Responsive Design</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem -->
+    <section class="project-section bg-light">
+        <div class="container">
+            <h2 class="section-title">Problem</h2>
+
+            <!-- CUSTOMIZATION: Describe the problem -->
+            <div class="section-content">
+                <p>The existing website had the right content, it just wasn't working hard enough for the business.</p>
+
+                <ul class="content-list">
+                    <li>The company’s core value proposition wasn’t immediately clear, making it difficult for
+                        first-time visitors to quickly understand what PMGSEAC does and why it matters.</li>
+                    <li>Navigation was cluttered and hard to follow, increasing cognitive load and making it difficult
+                        for users to find key services or next steps.</li>
+                    <li>Content lacked clear visual hierarchy, causing important information and calls-to-action to
+                        compete for attention rather than guide it.</li>
+                    <li>Trust-building elements were underutilized, with client outcomes, metrics, and proof points
+                        buried instead of reinforcing credibility early.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution -->
+    <section class="project-section">
+        <div class="container">
+            <h2 class="section-title">Solution</h2>
+
+            <!-- CUSTOMIZATION: Describe your solution -->
+            <div class="section-content">
+                <p>The redesign focused on making PMGSEAC's website work as a proper conversion and credibility tool,
+                    not just a digital brochure.</p>
+
+                <ul class="content-list">
+                    <li>Refreshed the visual design to feel modern and professional while staying true to the company's
+                        existing brand colors and identity.</li>
+                    <li>Reorganized content to surface PMGSEAC’s value proposition upfront, ensuring users immediately
+                        understand who they are, what they offer, and who they serve.</li>
+                    <li>Simplified and restructured navigation to create a cleaner, more intuitive user flow, reducing
+                        friction and decision fatigue.</li>
+                    <li>Applied strong visual hierarchy and UX principles (contrast, spacing, proximity, and progressive
+                        disclosure) to guide attention and improve scannability.</li>
+                    <li>Strengthened conversion and credibility by making the primary CTA (“Get 3 Free Quotes”)
+                        prominent and elevating trust signals such as metrics, testimonials, and client results.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- My Design Process -->
+    <section class="project-section bg-light">
+        <div class="container">
+            <h2 class="section-title">My Design Process</h2>
+            <p class="section-subtitle">See how I've done it</p>
+
+            <!-- 
+                ============================================================
+                SCALABLE IMAGE SECTION - ADD YOUR IMAGES HERE
+                ============================================================
                 
-                Example:
-                <article class="project-card" data-category="development" data-date="2026-01" data-featured="true">
+                HOW TO ADD IMAGES:
+                1. Copy the <img> tag below
+                2. Paste it as many times as you need
+                3. Update the src and alt text
+                4. Add 'zoomable' class to make image clickable
+                5. Images will automatically be full-width and responsive
                 
-                When users click "Top Picks", only projects with data-featured="true" will show.
-                You can feature as many or as few projects as you want - just add/remove the attribute!
-                ========================================
-                -->
+                Example with zoom icon visible:
+                <img src="../assets/projects/process-step-1.jpg" alt="Empathize Phase" class="process-image zoomable">
+                <img src="../assets/projects/process-step-2.jpg" alt="Define Phase" class="process-image zoomable">
                 
-                <!-- Development Projects -->
+                Example with zoom icon HIDDEN (add 'hide-zoom-icon' class):
+                <img src="../assets/projects/process-step-3.jpg" alt="Ideate Phase" class="process-image zoomable hide-zoom-icon">
+                
+                Recommended image size: 1200px width minimum
+                ============================================================
+            -->
+
+            <div class="process-images">
+                <!-- CUSTOMIZATION: Add your process images here -->
+                <img src="img/for-design-process.png" alt="Design Process Step 1" class="process-image zoomable">
+                <!-- <img src="../assets/projects/process-2.jpg" alt="Design Process Step 2" class="process-image zoomable"> -->
+                <!-- <img src="../assets/projects/process-3.jpg" alt="Design Process Step 3" class="process-image zoomable"> -->
+            </div>
+
+            <div class="process-images">
+                <!-- CUSTOMIZATION: Add your process images here -->
+                <img src="img/Desktop - 8.png" alt="Design Process Step 1" class="process-image zoomable">
+                <!-- <img src="../assets/projects/process-2.jpg" alt="Design Process Step 2" class="process-image zoomable"> -->
+                <!-- <img src="../assets/projects/process-3.jpg" alt="Design Process Step 3" class="process-image zoomable"> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Conclusion -->
+    <section class="project-section">
+        <div class="container">
+            <h2 class="section-title">Conclusion</h2>
+
+            <!-- CUSTOMIZATION: Write your conclusion -->
+            <div class="section-content">
+                <p>This project was a great reminder that good design isn't about starting from scratch — it's about
+                    understanding what's already there and making it work better. PMGSEAC had strong content and a solid
+                    brand foundation; the redesign just gave it the clarity and structure it needed to actually convert.
+                </p>
+
+                <p>Through this process, I learned how critical clear hierarchy, focused messaging, and intentional CTA
+                    placement are in guiding user behavior. Small structural and UX decisions can dramatically improve
+                    clarity, trust, and conversion without changing the core content.</p>
+            </div>
+
+            <!-- Results/Metrics (optional) -->
+            <div class="results-grid">
+                <div class="result-card">
+                    <div class="result-number">85%</div>
+                    <p class="result-label">User Satisfaction Increase</p>
+                </div>
+                <div class="result-card">
+                    <div class="result-number">3x</div>
+                    <p class="result-label">Faster Task Completion</p>
+                </div>
+                <div class="result-card">
+                    <div class="result-number">60%</div>
+                    <p class="result-label">Reduction in Support Tickets</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Client Feedback -->
+    <!-- <section class="project-section bg-light">
+        <div class="container">
+            <h2 class="section-title">Client Feedback</h2> -->
+
+    <!-- CUSTOMIZATION: Add client testimonial -->
+    <!-- <div class="feedback-container">
+                <div class="feedback-quote">
+                    <svg class="quote-icon" width="48" height="48" viewBox="0 0 48 48" fill="none">
+                        <path d="M21.6 28.8V38.4H12V28.8C12 23.28 16.08 18.72 21.6 16.8V12C13.68 14.16 7.2 21.36 7.2 28.8V43.2H26.4V28.8H21.6ZM40.8 28.8V43.2H36V28.8C36 23.28 40.08 18.72 45.6 16.8V12C37.68 14.16 31.2 21.36 31.2 28.8V43.2H40.8V28.8Z" fill="currentColor" opacity="0.1"/>
+                    </svg> -->
+    <!-- CUSTOMIZATION: Update testimonial text -->
+    <!-- <p class="feedback-text">"Working with Mark was an absolute pleasure. His attention to detail and user-centered approach resulted in a product that exceeded our expectations. The final design not only looked beautiful but also significantly improved our user engagement metrics."</p>
+                </div>
+                <div class="feedback-author"> -->
+    <!-- CUSTOMIZATION: Update client info -->
+    <!-- <p class="author-name">Jane Doe</p>
+                    <p class="author-role">CEO, Company Name</p>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Slide Deck Button -->
+    <!-- <section class="project-section">
+        <div class="container">
+            <div class="slide-deck-cta">
+                <h3 class="cta-title">Want to see more details?</h3>
+                <p class="cta-description">View the complete presentation deck for an in-depth look at the entire design process, research findings, and final deliverables.</p> -->
+    <!-- CUSTOMIZATION: Update link to your slide deck (Google Slides, Figma, PDF, etc.) -->
+    <!-- <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-large">
+                    View Full Slide Deck
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M4 10h12m0 0l-5-5m5 5l-5 5" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Suggested Projects -->
+    <section class="project-section bg-light">
+        <div class="container">
+            <h2 class="section-title">More Projects</h2>
+            <p class="section-subtitle">Check out these related projects</p>
+
+            <!-- 
+                ============================================================
+                CUSTOMIZATION: Update project cards
+                Add/remove cards as needed (recommended: 2-3 projects)
+                ============================================================
+            -->
+            <div class="suggested-grid">
+                <!-- Project Card 1 -->
                 <article class="project-card" data-category="development uiux" data-date="2025-06" data-featured="true">
                     <div class="project-image">
-                        <img src="img/iram/iram-thumbnail-image.png"
+                        <img src="img/project-1.jpg"
                             alt="Iram II Elementary School Student Transcript and Academic Records System"
                             class="project-thumbnail" loading="lazy">
                         <div class="project-date">
@@ -172,13 +376,13 @@
                             <span class="project-tag">Project Manager</span>
                             <span class="project-tag">Lead Designer</span>
                         </div>
-                        <h3 class="project-title">Iram II Elementary School - Student Transcript and Academic Records
+                        <h3 class="project-title">Iram II Elementary School Student Transcript and Academic Records
                             System</h3>
                         <p class="project-description">
                             Directed design and development of a desktop system for a local public elementary
                             school, improving access to 200+ student records and replacing manual processes.
                         </p>
-                        <a href="iram-desktop-system.html" class="project-link">
+                        <a href="#" class="project-link">
                             View Project
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                                 <path d="M3 8h10m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="1.5"
@@ -224,7 +428,7 @@
 
                 <article class="project-card" data-category="uiux development" data-date="2024-01" data-featured="true">
                     <div class="project-image">
-                        <img src="img/lunastalaan/lt-thumbnail-image.png" alt="Lunas Talaan Mobile Application"
+                        <img src="img/projects/project-3.jpg" alt="Lunas Talaan Mobile Application"
                             class="project-thumbnail" loading="lazy">
                         <div class="project-date">
                             <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -247,7 +451,7 @@
                             manage their medications, reaching 1,000+ installs across APKPure and
                             Amazon Appstore.
                         </p>
-                        <a href="lunas-talaan.html" class="project-link">
+                        <a href="#" class="project-link">
                             View Project
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                                 <path d="M3 8h10m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="1.5"
@@ -256,178 +460,49 @@
                         </a>
                     </div>
                 </article>
-
-                <article class="project-card" data-category="development" data-date="2025-02">
-                    <div class="project-image">
-                        <img src="img/a&m/a&m-thumbnail-image.png" alt="A&M Electric Contractors Inc. Website"
-                            class="project-thumbnail" loading="lazy">
-                        <div class="project-date">
-                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                                <rect x="2" y="3" width="10" height="9" rx="1" stroke="currentColor"
-                                    stroke-width="1.5" />
-                                <path d="M2 6h10M5 1v2M9 1v2" stroke="currentColor" stroke-width="1.5"
-                                    stroke-linecap="round" />
-                            </svg>
-                            Feb 2025
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-tags">
-                            <span class="project-tag">Frontend Developer</span>
-                            <span class="project-tag">Visual Designer</span>
-                        </div>
-                        <h3 class="project-title">A&M Electric Contractors Inc. Website</h3>
-                        <p class="project-description">
-                            Co-developed a company website for an international client, translating their brand
-                            guidelines into a clear and engaging web experience.
-                        </p>
-                        <a href="am-website.html" class="project-link">
-                            View Project
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                <path d="M3 8h10m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="1.5"
-                                    stroke-linecap="round" />
-                            </svg>
-                        </a>
-                    </div>
-                </article>
-
-                <article class="project-card" data-category="development" data-date="2023-05">
-                    <div class="project-image">
-                        <img src="img/pleyn/pleyn-thumbnail-image.png" alt="Pleyn Clothing" class="project-thumbnail"
-                            loading="lazy">
-                        <div class="project-date">
-                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                                <rect x="2" y="3" width="10" height="9" rx="1" stroke="currentColor"
-                                    stroke-width="1.5" />
-                                <path d="M2 6h10M5 1v2M9 1v2" stroke="currentColor" stroke-width="1.5"
-                                    stroke-linecap="round" />
-                            </svg>
-                            May 2023
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-tags">
-                            <span class="project-tag">Designer & Developer</span>
-                        </div>
-                        <h3 class="project-title">PLEYN Clothing</h3>
-                        <p class="project-description">
-                            Created a responsive e-commerce website prototype for a startup, helping the client
-                            visualize how their online shop could look and function.
-                        </p>
-                        <a href="pleyn-clothing.html" class="project-link">
-                            View Project
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                <path d="M3 8h10m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="1.5"
-                                    stroke-linecap="round" />
-                            </svg>
-                        </a>
-                    </div>
-                </article>
-
-                <article class="project-card" data-category="uiux" data-date="2025-12">
-                    <div class="project-image">
-                        <img src="img/projects/project-6.jpg" alt="PMGSEAC Website Redesign"
-                            class="project-thumbnail" loading="lazy">
-                        <div class="project-date">
-                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                                <rect x="2" y="3" width="10" height="9" rx="1" stroke="currentColor"
-                                    stroke-width="1.5" />
-                                <path d="M2 6h10M5 1v2M9 1v2" stroke="currentColor" stroke-width="1.5"
-                                    stroke-linecap="round" />
-                            </svg>
-                            Dec 2025
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-tags">
-                            <span class="project-tag">UI/UX Designer</span>
-                        </div>
-                        <h3 class="project-title">PMGSEAC Website Redesign</h3>
-                        <p class="project-description">
-                            Refreshed the PMGSEAC website with UI/UX improvements, standardized design elements, and
-                            stronger alignment with company branding.
-                        </p>
-                        <a href="pmgseac-redesign.html" class="project-link">
-                            View Project
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                <path d="M3 8h10m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="1.5"
-                                    stroke-linecap="round" />
-                            </svg>
-                        </a>
-                    </div>
-                </article>
-                
-                <article class="project-card" data-category="graphics" data-date="2025-12">
-                    <div class="project-image">
-                        <img src="img/projects/project-6.jpg" alt=""
-                            class="project-thumbnail" loading="lazy">
-                        <div class="project-date">
-                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                                <rect x="2" y="3" width="10" height="9" rx="1" stroke="currentColor"
-                                    stroke-width="1.5" />
-                                <path d="M2 6h10M5 1v2M9 1v2" stroke="currentColor" stroke-width="1.5"
-                                    stroke-linecap="round" />
-                            </svg>
-                            Dec 2025
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-tags">
-                            <span class="project-tag">UI/UX Designer</span>
-                        </div>
-                        <h3 class="project-title">Graphics Sample</h3>
-                        <p class="project-description">
-                            Refreshed the PMGSEAC website with UI/UX improvements, standardized design elements, and
-                            stronger alignment with company branding.
-                        </p>
-                        <a href="project-page - graphics.html" class="project-link">
-                            View Project
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                <path d="M3 8h10m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="1.5"
-                                    stroke-linecap="round" />
-                            </svg>
-                        </a>
-                    </div>
-                </article>
-                
             </div>
 
-            <!-- No Results Message -->
-            <!-- No Results Message -->
-            <div class="no-results" id="noResults" style="display: none;">
-                <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
-                    <circle cx="32" cy="32" r="30" stroke="currentColor" stroke-width="2" />
-                    <path d="M32 20v16M32 44v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                </svg>
-                <h3>No projects found</h3>
-                <p>Try adjusting your search or filter to find what you're looking for.</p>
-            </div>
-
-            <!-- Pagination Controls -->
-            <div class="pagination" id="pagination" style="display: none;">
-                <button class="pagination-btn pagination-prev" id="prevPage" aria-label="Previous page">
+            <!-- Back to Work Link -->
+            <div class="section-footer">
+                <a href="work.html" class="btn btn-outline">
+                    View All Projects
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                        <path d="M12 16l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M4 10h12m0 0l-5-5m5 5l-5 5" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" />
                     </svg>
-                    Previous
-                </button>
-                <div class="pagination-numbers" id="paginationNumbers">
-                    <!-- Page numbers will be inserted here by JavaScript -->
-                </div>
-                <button class="pagination-btn pagination-next" id="nextPage" aria-label="Next page">
-                    Next
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                        <path d="M8 4l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </button>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Section Divider -->
-    <div class="section-divider">
-        <div class="divider-line"></div>
-    </div>
+    <!-- CTA Section -->
+    <section class="about-cta-section">
+        <div class="container">
+            <div class="about-cta-content">
+                <h2>Let's Work Together</h2>
+                <p>Whether you need design, development perspective, project management, or someone who can do a little
+                    bit of everything—let's talk.</p>
+                <div class="cta-buttons">
+                    <a href="https://forms.gle/L765wte7jkqrr68J8" target="_blank" rel="noopener noreferrer"
+                        class="btn btn-primary">
+                        Start a Project
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M4 10h12m0 0l-5-5m5 5l-5 5" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                    <a href="assets/MarkChristian_Labucca_ProjectCoordinator_CV.pdf" target="_blank"
+                        rel="noopener noreferrer" class="btn btn-secondary">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M10 13V3m0 10l-4-4m4 4l4-4M3 17h14" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        Download CV
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Contact Section -->
     <section class="contact" id="contact">
@@ -448,7 +523,8 @@
                         I'm always open to discussing new opportunities and collaborations.
                     </p>
                     <div class="contact-methods">
-                        <a href="/cdn-cgi/l/email-protection#0a626f6666654a7a65787e6c6566636524696567" class="contact-method">
+                        <a href="/cdn-cgi/l/email-protection#f8909d949497b888978a8c9e97949197d69b9795"
+                            class="contact-method">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                                 <rect x="3" y="6" width="18" height="12" rx="2" stroke="currentColor"
                                     stroke-width="2" />
@@ -456,7 +532,9 @@
                             </svg>
                             <div>
                                 <div class="method-label">Email</div>
-                                <div class="method-value"><span class="__cf_email__" data-cfemail="d0b8b5bcbcbf90a0bfa2a4b6bfbcb9bffeb3bfbd">[email&#160;protected]</span></div>
+                                <div class="method-value"><span class="__cf_email__"
+                                        data-cfemail="1b737e7777745b6b74696f7d7477727435787476">[email&#160;protected]</span>
+                                </div>
                             </div>
                         </a>
                         <a href="tel:+1234567890" class="contact-method">
@@ -600,6 +678,8 @@
             <div class="footer-bottom">
                 <p>&copy; 2026 Mark Labucca. All rights reserved.</p>
                 <div class="footer-bottom-links">
+                    <!-- <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a> -->
                 </div>
             </div>
         </div>
@@ -608,7 +688,7 @@
     <!-- Cursor Trail -->
     <div class="cursor-dot" id="cursorDot"></div>
     <div class="cursor-outline" id="cursorOutline"></div>
-    
+
     <!-- SVG Container for continuous line trails -->
     <svg class="cursor-trail-svg" id="cursorTrailSvg" width="100%" height="100%">
         <!-- Trail paths will be added here dynamically -->
@@ -618,11 +698,11 @@
     <button class="back-to-top" id="backToTop" aria-label="Back to top">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
             <path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-      
-            stroke-linejoin="round" />
+                stroke-linejoin="round" />
         </svg>
     </button>
 
-    <script src="js/work.js" defer></script>
+    <script src="js/project-page.js" defer></script>
 </body>
+
 </html>
