@@ -745,6 +745,7 @@ body.loader-active {
     display: flex;
     flex-direction: column;
     height: 100%;
+    width: 100%;
     background: var(--white);
     border-radius: 16px;
     overflow: hidden;
@@ -1407,6 +1408,11 @@ body.loader-active {
 
     .projects-grid {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .project-card {
+        width: 100%;
     }
 
     .pagination {
@@ -1446,7 +1452,17 @@ body.loader-active {
 
 @media (max-width: 480px) {
     .container {
-        padding: 0 1.5rem;
+        padding: 0 1rem;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+
+    .project-card {
+        width: 100%;
+        max-width: 100%;
     }
 
     .section-title {
@@ -1474,6 +1490,132 @@ body.loader-active {
     .back-to-top svg {
         width: 20px;
         height: 20px;
+    }
+}
+
+/* ================================================================
+   VERY SMALL SCREENS (320px - 360px)
+   ================================================================ */
+@media (max-width: 360px) {
+    html, body {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-x: hidden;
+    }
+ 
+    .container {
+        padding: 0 0.75rem !important;
+        max-width: 100% !important;
+        box-sizing: border-box;
+    }
+ 
+    .projects {
+        overflow-x: hidden;
+    }
+ 
+    .projects .container {
+        padding: 0 0.75rem !important;
+    }
+ 
+    .projects-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+        padding: 0 !important;
+        width: 100% !important;
+        box-sizing: border-box;
+    }
+ 
+    .project-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        margin: 0 auto;
+    }
+ 
+    .project-content {
+        padding: 1.5rem !important;
+    }
+ 
+    .project-title {
+        font-size: 1.25rem !important;
+    }
+ 
+    .project-description {
+        font-size: 0.9rem !important;
+    }
+ 
+    .project-date {
+        font-size: 0.65rem !important;
+        padding: 0.35rem 0.5rem !important;
+    }
+ 
+    .filter-chip {
+        padding: 0.5rem 0.9rem !important;
+        font-size: 0.8rem !important;
+    }
+ 
+    .section-title {
+        font-size: 1.5rem !important;
+    }
+}
+ 
+/* ================================================================
+   ANDROID PHONES (361px - 428px)
+   ================================================================ */
+@media (min-width: 361px) and (max-width: 428px) {
+    html, body {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-x: hidden;
+        margin: 0;
+        padding: 0;
+    }
+ 
+    .projects {
+        width: 100% !important;
+        overflow-x: hidden;
+    }
+ 
+    .projects .container {
+        padding: 0 1rem !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+ 
+    .projects-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 100% !important;
+        gap: 1.5rem !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
+    }
+ 
+    .project-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 auto !important;
+        box-sizing: border-box !important;
+    }
+ 
+    .project-content {
+        padding: 1.75rem;
+    }
+ 
+    /* Ensure pagination also fits */
+    .pagination {
+        width: 100% !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+    }
+ 
+    .pagination-btn,
+    .pagination-number {
+        min-width: 36px !important;
+        padding: 0.5rem 0.75rem !important;
+        font-size: 0.875rem !important;
     }
 }
 

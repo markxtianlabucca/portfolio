@@ -1199,9 +1199,10 @@ body.loader-active {
    ================================ */
 .suggested-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* from 320px to 280px for better mobile fit */
     gap: 2rem;
     margin: 3rem 0;
+    justify-items: center; /*Newly added to center cards in wider screens*/
 }
 
 .project-card {
